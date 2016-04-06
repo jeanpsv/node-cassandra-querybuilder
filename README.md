@@ -8,7 +8,7 @@ Apache Cassandra QueryBuilder for NodeJS
 * /conditions (WHERE, clause)
 * /modifiers (LIMIT, ORDER, USING)
 * /util (FROM)
-* /builder (builder method)
+* builder (builder and query-builder)
 
 ## Contributors
 
