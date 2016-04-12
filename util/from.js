@@ -1,15 +1,14 @@
-var _database;
-var _table;
-
-
 /**
  * From constructor
  * @param {string} database database name
  * @param {string} table    table name
  */
 function From(database, table) {
-	_database = database;
-	_table = table;
+	this._database = undefined;
+	this._table = undefined;
+
+	if (database) this.database(database);
+	if (table) this.table(table);
 };
 
 
@@ -20,10 +19,10 @@ function From(database, table) {
  */
 From.prototype.database = function(database) {
 	if (database) {
-		_database = database;
+		this._database = database;
 		return;
 	}
-	return _database;
+	return this._database;
 };
 
 /**
@@ -33,10 +32,10 @@ From.prototype.database = function(database) {
  */
 From.prototype.table = function(table) {
 	if (table) {
-		_table = table;
+		this._table = table;
 		return;
 	}
-	return _table;
+	return this._table;
 };
 
 /**
@@ -45,8 +44,8 @@ From.prototype.table = function(table) {
  */
 From.prototype.toString = function () {
 	var to_string = " FROM ";
-	if (_database) to_string = to_string + _database + ".";
-	to_string = to_string + _table;
+	if (this._database) to_string = to_string + this._database + ".";
+	to_string = to_string + this._table;
 
 	return to_string;
 };
