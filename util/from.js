@@ -7,8 +7,12 @@ function From(database, table) {
 	this._database = undefined;
 	this._table = undefined;
 
-	if (database) this.database(database);
-	if (table) this.table(table);
+	if (table) {
+		this.database(database);
+		this.table(table);
+	} else {
+		this.table(database); //one parameter
+	}
 };
 
 
