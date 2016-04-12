@@ -1,0 +1,30 @@
+{
+  "name": "node-cassandra-querybuilder",
+  "version": "0.1.0",
+  "description": "this project provides a QueryBuilder for Apache Cassandra to NodeJS",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mocha": "./node_modules/mocha/bin/mocha --recursive || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeanpsv/node-cassandra-querybuilder.git"
+  },
+  "keywords": [
+    "cassandra",
+    "querybuilder"
+  ],
+  "author": "Jean Vasconcelos",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jeanpsv/node-cassandra-querybuilder/issues"
+  },
+  "homepage": "https://github.com/jeanpsv/node-cassandra-querybuilder#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
+}
