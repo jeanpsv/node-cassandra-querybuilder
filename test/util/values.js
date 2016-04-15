@@ -1,4 +1,4 @@
-process.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';
 
 var reqlib = require('app-root-path').require;
 var assert = require('assert');
