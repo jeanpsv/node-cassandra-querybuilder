@@ -6,7 +6,7 @@ var FROM = reqlib('/util/from');
 
 describe('From', function() {
 	describe('#constructor', function() {
-		it('should create a instance of From', function() {
+		it('should create an instance of From', function() {
 			var f = new FROM();
 			assert.ok(f);
 		});
@@ -18,7 +18,11 @@ describe('From', function() {
 			assert.equal(f.database(), database);
 			assert.equal(f.table(), table);
 		});
-		it('should set database only');
+		it('should set table only', function() {
+			var table = 'table';
+			var f = new FROM(table);
+			assert.equal(f.table(), table);
+		});
 	});
 	describe('#database', function() {
 		it('should set and get database', function() {
@@ -44,6 +48,11 @@ describe('From', function() {
 			assert.ok(f);
 			assert.equal(f.toString(), " FROM " + database + "." + table);
 		});
-		it('should get string representation of the instance (only table)')
+		it('should get string representation of the instance (only table)', function() {
+			var table = 'table';
+			var f = new FROM(table);
+			assert.ok(f);
+			assert.equal(f.toString(), " FROM " + table);
+		});
 	});
 });
