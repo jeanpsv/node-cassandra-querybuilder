@@ -6,7 +6,7 @@ var FROM = reqlib('/util/from');
 
 describe('From', function() {
 	describe('#constructor', function() {
-		it('should create a instance of From', function() {
+		it('should create an instance of From', function() {
 			var f = new FROM();
 			assert.ok(f);
 		});
@@ -53,6 +53,6 @@ describe('From', function() {
 			var f = new FROM(table);
 			assert.ok(f);
 			assert.equal(f.toString(), " FROM " + table);
-		})
+		});
 	});
 });

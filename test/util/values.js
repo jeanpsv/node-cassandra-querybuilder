@@ -6,7 +6,7 @@ var VALUES = reqlib('/util/values');
 
 describe('Values', function() {
 	describe('#constructor', function() {
-		it('should create a instance of Values', function() {
+		it('should create an instance of Values', function() {
 			var v = new VALUES();
 			assert.ok(v);
 		});
