@@ -7,11 +7,20 @@ var FROM = reqlib('/util/from');
  * @param {string} database database name
  * @param {string} table    table name
  */
-function Builder(database, table) {
-	if (!database && !table) throw new Error('missing parameters: ([database,] table)')
-	this._from = new FROM(database, table);
+function Builder() {
+	this._from = new FROM();
 };
 
+
+/**
+ * set database and table
+ * @param  {string} database database name
+ * @param  {string} table    table name
+ * @return {From}            the instance
+ */
+Builder.prototype.from = function(database, table) {
+	return this._from.from(database, table);
+};
 
 /**
  * to string

@@ -10,12 +10,6 @@ describe('Values', function() {
 			var v = new VALUES();
 			assert.ok(v);
 		});
-		it('should set column and value', function() {
-			var column = 'column';
-			var value = 'value';
-			var v = new VALUES(column, value);
-			assert.ok(v);
-		});
 	});
 	describe('#set', function() {
 		it('should set column and value', function() {
@@ -75,8 +69,8 @@ describe('Values', function() {
 			var value1 = 'value1';
 			var value2 = 'value2';
 			var value3 = 'value3';
-			var v = new VALUES(column1, value1);
-			v.set(column2, value2).set(column3, value3);
+			var v = new VALUES();
+			v.set(column1, value1).set(column2, value2).set(column3, value3);
 			var expected = [];
 			expected.push(column1 + ' = ' + value1);
 			expected.push(column2 + ' = ' + value2);

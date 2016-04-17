@@ -7,33 +7,32 @@ var Builder = reqlib('/builder/builder');
 describe('Builder', function() {
 	describe('#constructor', function() {
 		it('should create an instance of Builder', function() {
-			var b1 = new Builder('table');
-			assert.ok(b1);
-			var b2 = new Builder('database', 'table');
-			assert.ok(b2);
+			var b = new Builder();
+			assert.ok(b);
 		});
-		it('should throw an Error expection', function() {
-			assert.throws(function() {
-				var builder = new Builder();
-			}, function(err) {
-				if ((err instanceof Error) && /missing parameters: \(\[database,\] table\)/.test(err)) {
-					return true;
-				}
-			});
+	});
+	describe('#from', function() {
+		it('should set database and table', function() {
+			var database = 'database';
+			var table = 'table';
+			var builder = new Builder();
+			var f = builder.from(database, table);
+			assert.equal(f.database(), database);
+			assert.equal(f.table(), table);
 		});
 	});
 	describe('#toString', function() {
 		it('should get string representation of the instance', function() {
 			var database = 'database';
 			var table = 'table';
-			var builder = new Builder(database, table);
-			assert.ok(builder);
+			var builder = new Builder();
+			builder.from(database, table);
 			assert.equal(builder.toString(), " FROM " + database + "." + table);
 		});
 		it('should get string representation of the instance (only table)', function() {
 			var table = 'table';
-			var builder = new Builder(table);
-			assert.ok(builder);
+			var builder = new Builder();
+			builder.from(table);
 			assert.equal(builder.toString(), " FROM " + table);
 		});
 	});

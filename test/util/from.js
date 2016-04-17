@@ -10,19 +10,6 @@ describe('From', function() {
 			var f = new FROM();
 			assert.ok(f);
 		});
-		it('should set database and table', function() {
-			var database = 'database';
-			var table = 'table';
-			var f = new FROM(database, table);
-			assert.ok(f);
-			assert.equal(f.database(), database);
-			assert.equal(f.table(), table);
-		});
-		it('should set table only', function() {
-			var table = 'table';
-			var f = new FROM(table);
-			assert.equal(f.table(), table);
-		});
 	});
 	describe('#database', function() {
 		it('should set and get database', function() {
@@ -40,18 +27,34 @@ describe('From', function() {
 			assert.equal(f.table(), table);
 		});
 	});
+	describe('#from', function() {
+		it('should set database and table', function() {
+			var database = 'database';
+			var table = 'table';
+			var f = new FROM();
+			f.from(database, table);
+			assert.equal(f.database(), database);
+			assert.equal(f.table(), table);
+		});
+		it('should set table only', function() {
+			var table = 'table';
+			var f = new FROM(table);
+			f.from(table);
+			assert.equal(f.table(), table);
+		});
+	})
 	describe('#toString', function() {
 		it('should get string representation of the instance', function() {
 			var database = 'database';
 			var table = 'table';
-			var f = new FROM(database, table);
-			assert.ok(f);
+			var f = new FROM();
+			f.from(database, table);
 			assert.equal(f.toString(), " FROM " + database + "." + table);
 		});
 		it('should get string representation of the instance (only table)', function() {
 			var table = 'table';
-			var f = new FROM(table);
-			assert.ok(f);
+			var f = new FROM();
+			f.from(table);
 			assert.equal(f.toString(), " FROM " + table);
 		});
 	});

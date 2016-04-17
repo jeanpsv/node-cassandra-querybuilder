@@ -1,12 +1,9 @@
 /**
  * Values constructor
- * @param {string} column column name
- * @param {string} value  value to set
  */
-function Values(column, value) {
+function Values() {
 	this._columns = [];
 	this._values = [];
-	this.set(column, value);
 };
 
 

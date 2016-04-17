@@ -11,13 +11,16 @@ describe('Where', function() {
 			var w = new WHERE();
 			assert.ok(w);
 		});
+	});
+	describe('#where', function() {
 		it('should insert clause', function() {
 			var o = new OPERATOR();
 			var column = 'col';
 			var operator = '=';
 			var value = 'val';
 			o.eq(column, value);
-			var w = new WHERE(o);
+			var w = new WHERE();
+			w.where(o);
 			var to_string = [];
 			to_string.push('WHERE');
 			to_string.push(o);
@@ -34,8 +37,8 @@ describe('Where', function() {
 			var column2 = 'col2';
 			var value2 = 'val2';
 			o2.eq(column2, value2);
-			var w = new WHERE(o1);
-			w.and(o2);
+			var w = new WHERE();
+			w.where(o1).and(o2);
 			var to_string = [];
 			to_string.push('WHERE');
 			to_string.push(o1);
