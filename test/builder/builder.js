@@ -22,18 +22,41 @@ describe('Builder', function() {
 		});
 	});
 	describe('#toString', function() {
-		it('should get string representation of the instance', function() {
+		it('should get string representation of the instance with From', function() {
 			var database = 'database';
 			var table = 'table';
 			var builder = new Builder();
 			builder.from(database, table);
-			assert.equal(builder.toString(), " FROM " + database + "." + table);
+			var to_string = [];
+			to_string.push('FROM');
+			to_string.push(database + '.' + table);
+			assert.equal(builder.toString(true), to_string.join(' '));
 		});
-		it('should get string representation of the instance (only table)', function() {
+		it('should get string representation of the instance with From (only table)', function() {
 			var table = 'table';
 			var builder = new Builder();
 			builder.from(table);
-			assert.equal(builder.toString(), " FROM " + table);
+			var to_string = [];
+			to_string.push('FROM');
+			to_string.push(table);
+			assert.equal(builder.toString(true), to_string.join(' '));
+		});
+		it('should get string representation of the instance without From', function() {
+			var database = 'database';
+			var table = 'table';
+			var builder = new Builder();
+			builder.from(database, table);
+			var to_string = [];
+			to_string.push(database + '.' + table);
+			assert.equal(builder.toString(false), to_string.join(' '));
+		});
+		it('should get string representation of the instance without From (only table)', function() {
+			var table = 'table';
+			var builder = new Builder();
+			builder.from(table);
+			var to_string = [];
+			to_string.push(table);
+			assert.equal(builder.toString(false), to_string.join(' '));
 		});
 	});
 });

@@ -44,18 +44,41 @@ describe('From', function() {
 		});
 	})
 	describe('#toString', function() {
-		it('should get string representation of the instance', function() {
+		it('should get string representation of the instance with From', function() {
 			var database = 'database';
 			var table = 'table';
 			var f = new FROM();
 			f.from(database, table);
-			assert.equal(f.toString(), " FROM " + database + "." + table);
+			var to_string = [];
+			to_string.push('FROM');
+			to_string.push(database + '.' + table);
+			assert.equal(f.toString(true), to_string.join(' '));
 		});
-		it('should get string representation of the instance (only table)', function() {
+		it('should get string representation of the instance with From (only table)', function() {
 			var table = 'table';
 			var f = new FROM();
 			f.from(table);
-			assert.equal(f.toString(), " FROM " + table);
+			var to_string = [];
+			to_string.push('FROM');
+			to_string.push(table);
+			assert.equal(f.toString(true), to_string.join(' '));
+		});
+		it('should get string representation of the instance without From', function() {
+			var database = 'database';
+			var table = 'table';
+			var f = new FROM();
+			f.from(database, table);
+			var to_string = [];
+			to_string.push(database + '.' + table);
+			assert.equal(f.toString(false), to_string.join(' '));
+		});
+		it('should get string representation of the instance without From (only table)', function() {
+			var table = 'table';
+			var f = new FROM();
+			f.from(table);
+			var to_string = [];
+			to_string.push(table);
+			assert.equal(f.toString(false), to_string.join(' '));
 		});
 	});
 });

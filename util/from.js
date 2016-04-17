@@ -17,8 +17,9 @@ From.prototype.database = function(database) {
 	if (database) {
 		this._database = database;
 		return this;
+	} else {
+		return this._database;
 	}
-	return this._database;
 };
 
 /**
@@ -31,8 +32,9 @@ From.prototype.table = function(table) {
 	if (table) {
 		this._table = table;
 		return this;
+	} else {
+		return this._table;
 	}
-	return this._table;
 };
 
 /**
@@ -53,14 +55,14 @@ From.prototype.from = function(database, table) {
 
 /**
  * to string
+ * @param  {boolean} withFrom true for with 'FROM' and false otherwise
  * @return {string} string that represents the instance
  */
-From.prototype.toString = function () {
-	var to_string = " FROM ";
-	if (this._database) to_string = to_string + this._database + ".";
-	to_string = to_string + this._table;
+From.prototype.toString = function (withFrom) {
+	var to_string = (withFrom) ? ['FROM'] : [];
+	var reference = (this._database) ? to_string.push(this._database + '.' + this._table) : to_string.push(this._table);
 
-	return to_string;
+	return to_string.join(' ');
 };
 
 

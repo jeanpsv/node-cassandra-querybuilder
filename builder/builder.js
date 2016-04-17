@@ -24,10 +24,11 @@ Builder.prototype.from = function(database, table) {
 
 /**
  * to string
+ * @param  {boolean} withFrom true for with 'FROM' and false otherwise
  * @return {string} string that represents the instance
  */
-Builder.prototype.toString = function() {
-	return this._from.toString();
+Builder.prototype.toString = function(withFrom) {
+	return this._from.toString(withFrom);
 };
 
 
