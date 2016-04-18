@@ -1,8 +1,7 @@
 /**
  * Where constructor
- * @param {Operator} clause condition
  */
-function Where(clause) {
+function Where() {
 	this._clauses = [];
 	this._clauses.push('WHERE');
 };
