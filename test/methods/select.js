@@ -50,7 +50,7 @@ describe('Select', function() {
 			assert.ok(s.where(o1).and(o2));
 		});
 	});
-	describe('#and', function() {
+	describe('#toString', function() {
 		it('should get string representation of the instance', function() {
 			var columns = ['column1', 'column2'];
 			var database = 'database';
@@ -69,7 +69,7 @@ describe('Select', function() {
 			var to_string = [];
 			to_string.push('SELECT');
 			to_string.push(columns.join());
-			to_string.push(f.toString());
+			to_string.push(f.toString(true));
 			to_string.push('WHERE');
 			to_string.push(o1.toString());
 			to_string.push('AND');

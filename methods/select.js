@@ -63,7 +63,7 @@ Select.prototype.and = function(clause) {
 Select.prototype.toString = function() {
 	var to_string = ['SELECT'];
 	to_string.push(this._values.columns());
-	to_string.push(this._from.toString(false));
+	to_string.push(this._from.toString(true));
 	to_string.push(this._where.toString() + ';');
 	return to_string.join(' ');
 };
