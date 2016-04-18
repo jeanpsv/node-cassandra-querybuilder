@@ -22,7 +22,7 @@ Where.prototype.where = function(clause) {
 /**
  * concat condition
  * @param  {Operator} clause condition
- * @return {Where}        the instance
+ * @return {Where}           the instance
  */
 Where.prototype.and = function(clause) {
 	if (clause) {
