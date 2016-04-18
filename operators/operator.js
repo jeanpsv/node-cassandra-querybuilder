@@ -1,3 +1,7 @@
+var reqlib = require('app-root-path').require;
+
+var UUID = reqlib('/util/uuid');
+
 /**
  * Operator constructor
  * @param {string} column   column name
@@ -20,7 +24,7 @@ function Operator() {
 Operator.prototype.compile = function(column, operator, value) {
 	this._column = column;
 	this._operator = operator;
-	this._value = value;
+	this._value = (typeof value === 'number' || value instanceof UUID) ? this._value = value.toString() : this._value = '\'' + value + '\'';
 };
 
 /**

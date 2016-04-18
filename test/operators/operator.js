@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'test';
 var reqlib = require('app-root-path').require;
 var assert = require('assert');
 var OPERATOR = reqlib('/operators/operator');
+var UUID = reqlib('/util/uuid');
 
 describe('Operator', function() {
 	describe('#constructor', function() {
@@ -15,12 +16,19 @@ describe('Operator', function() {
 		it('should compile', function() {
 			var column = 'col';
 			var operator = '=';
-			var value = 'val';
+			var value1 = 'val';
+			var value2 = 5;
+			var value3 = new UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68');
 			var o = new OPERATOR();
-			o.compile(column, operator, value);
+			o.compile(column, operator, value1);
 			assert.equal(o._column, column);
 			assert.equal(o._operator, operator);
-			assert.equal(o._value, value);
+			assert.equal(o._value, '\'' + value1 + '\'');
+			o.compile(column, operator, value2);
+			assert.equal(o._value, value2);
+			o.compile(column, operator, value3);
+			assert.equal(o._value, value3);
+
 		});
 	});
 	describe('#eq', function() {
@@ -32,7 +40,7 @@ describe('Operator', function() {
 			o.eq(column, value);
 			assert.equal(o._column, column);
 			assert.equal(o._operator, operator);
-			assert.equal(o._value, value);
+			assert.equal(o._value, '\'' + value + '\'');
 		});
 	});
 	describe('#lt', function() {
@@ -44,7 +52,7 @@ describe('Operator', function() {
 			o.lt(column, value);
 			assert.equal(o._column, column);
 			assert.equal(o._operator, operator);
-			assert.equal(o._value, value);
+			assert.equal(o._value, '\'' + value + '\'');
 		});
 	});
 	describe('#lte', function() {
@@ -56,7 +64,7 @@ describe('Operator', function() {
 			o.lte(column, value);
 			assert.equal(o._column, column);
 			assert.equal(o._operator, operator);
-			assert.equal(o._value, value);
+			assert.equal(o._value, '\'' + value + '\'');
 		});
 	});
 	describe('#gt', function() {
@@ -68,7 +76,7 @@ describe('Operator', function() {
 			o.gt(column, value);
 			assert.equal(o._column, column);
 			assert.equal(o._operator, operator);
-			assert.equal(o._value, value);
+			assert.equal(o._value, '\'' + value + '\'');
 		});
 	});
 	describe('#gte', function() {
@@ -80,7 +88,7 @@ describe('Operator', function() {
 			o.gte(column, value);
 			assert.equal(o._column, column);
 			assert.equal(o._operator, operator);
-			assert.equal(o._value, value);
+			assert.equal(o._value, '\'' + value + '\'');
 		});
 	});
 	describe('#toString', function() {
@@ -93,7 +101,7 @@ describe('Operator', function() {
 			var to_string = [];
 			to_string.push(column);
 			to_string.push(operator);
-			to_string.push(value);
+			to_string.push('\'' + value + '\'');
 			assert.equal(o.toString(), to_string.join(' '));
 		});
 	});
