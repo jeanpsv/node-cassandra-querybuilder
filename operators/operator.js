@@ -27,45 +27,55 @@ Operator.prototype.compile = function(column, operator, value) {
  * Equal operator
  * @param  {string} column column name
  * @param  {string} value  value to set
+ * @return {Operator}      the instance
  */
 Operator.prototype.eq = function(column, value) {
 	this.compile(column, '=', value);
+	return this;
 };
 
 /**
  * Less than operator
  * @param  {string} column column name
  * @param  {string} value  value to set
+ * @return {Operator}      the instance
  */
 Operator.prototype.lt = function(column, value) {
 	this.compile(column, '<', value);
+	return this;
 };
 
 /**
  * Less than or Equal operator
  * @param  {string} column column name
  * @param  {string} value  value to set
+ * @return {Operator}      the instance
  */
 Operator.prototype.lte = function(column, value) {
 	this.compile(column, '<=', value);
+	return this;
 };
 
 /**
  * Greater operator
  * @param  {string} column column name
  * @param  {string} value  value to set
+ * @return {Operator}      the instance
  */
 Operator.prototype.gt = function(column, value) {
 	this.compile(column, '>', value);
+	return this;
 };
 
 /**
  * Greater than or Equal operator
  * @param  {string} column column name
  * @param  {string} value  value to set
+ * @return {Operator}      the instance
  */
 Operator.prototype.gte = function(column, value) {
 	this.compile(column, '>=', value);
+	return this;
 };
 
 /**
