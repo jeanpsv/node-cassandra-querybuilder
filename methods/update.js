@@ -62,6 +62,10 @@ Update.prototype.and = function(clause) {
 	return this;
 };
 
+/**
+ * to string
+ * @return {string} string that represents the instance
+ */
 Update.prototype.toString = function() {
 	var to_string = ['UPDATE'];
 	to_string.push(Builder.prototype.toString.call(this, false));
