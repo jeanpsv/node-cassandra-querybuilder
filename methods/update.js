@@ -1,21 +1,15 @@
 var reqlib = require('app-root-path').require;
 
-var Builder = reqlib('/builder/builder');
+var From = reqlib('/util/from');
 var Operator = reqlib('/operators/operator');
 var Where = reqlib('/conditions/where');
-
-
-/**
- * inheritance
- */
-Update.prototype = Object.create(Builder.prototype);
 
 
 /**
  * Insert constructor
  */
 function Update() {
-	Builder.call(this);
+	this._from = new From();
 	this._operators = [];
 	this._where = new Where();
 };
@@ -28,7 +22,7 @@ function Update() {
  * @return {Update}          the instance
  */
 Update.prototype.from = function(database, table) {
-	Builder.prototype.from.call(this, database, table);
+	this._from.from(database, table);
 	return this;
 };
 
@@ -68,7 +62,7 @@ Update.prototype.and = function(clause) {
  */
 Update.prototype.toString = function() {
 	var to_string = ['UPDATE'];
-	to_string.push(Builder.prototype.toString.call(this, false));
+	to_string.push(this._from.toString(false));
 	to_string.push('SET');
 	to_string.push(this._operators.join(', '));
 	to_string.push(this._where.toString() + ';');

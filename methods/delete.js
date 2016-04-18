@@ -1,20 +1,14 @@
 var reqlib = require('app-root-path').require;
 
-var Builder = reqlib('/builder/builder');
+var From = reqlib('/util/from');
 var Where = reqlib('/conditions/where');
-
-
-/**
- * inheritance
- */
-Delete.prototype = Object.create(Builder.prototype);
 
 
 /**
  * Delete constructor
  */
 function Delete() {
-	Builder.call(this);
+	this._from = new From();
 	this._where = new Where();
 };
 
@@ -26,7 +20,7 @@ function Delete() {
  * @return {Delete}          the instance
  */
 Delete.prototype.from = function(database, table) {
-	Builder.prototype.from.call(this, database, table);
+	this._from.from(database, table);
 	return this;
 };
 
@@ -56,7 +50,7 @@ Delete.prototype.and = function(clause) {
  */
 Delete.prototype.toString = function() {
 	var to_string = ['DELETE'];
-	to_string.push(Builder.prototype.toString.call(this, true));
+	to_string.push(this._from.toString(true));
 	to_string.push(this._where.toString() + ';');
 	return to_string.join(' ');
 };

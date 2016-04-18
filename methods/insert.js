@@ -1,20 +1,14 @@
 var reqlib = require('app-root-path').require;
 
-var Builder = reqlib('/builder/builder');
+var From = reqlib('/util/from');
 var Values = reqlib('/util/values');
-
-
-/**
- * inheritance
- */
-Insert.prototype = Object.create(Builder.prototype);
 
 
 /**
  * Insert constructor
  */
 function Insert() {
-	Builder.call(this);
+	this._from = new From();
 	this._values = new Values();
 };
 
@@ -26,7 +20,7 @@ function Insert() {
  * @return {Insert}          the instance
  */
 Insert.prototype.from = function(database, table) {
-	Builder.prototype.from.call(this, database, table);
+	this._from.from(database, table);
 	return this;
 };
 
@@ -56,7 +50,7 @@ Insert.prototype.values = function(values) {
  */
 Insert.prototype.toString = function() {
 	var to_string = ['INSERT INTO'];
-	to_string.push(Builder.prototype.toString.call(this, false));
+	to_string.push(this._from.toString(false));
 	to_string.push('(' + this._values.columns() + ')');
 	to_string.push('VALUES');
 	to_string.push('(' + this._values.values() + ');');

@@ -1,21 +1,15 @@
 var reqlib = require('app-root-path').require;
 
-var Builder = reqlib('/builder/builder');
+var From = reqlib('/util/from');
 var Values = reqlib('/util/values');
 var Where = reqlib('/conditions/where');
-
-
-/**
- * inheritance
- */
-Select.prototype = Object.create(Builder.prototype);
 
 
 /**
  * Select constructor
  */
 function Select() {
-	Builder.call(this);
+	this._from = new From();
 	this._values = new Values();
 	this._where = new Where();
 };
@@ -38,7 +32,7 @@ Select.prototype.columns = function(columns) {
  * @return {Select}          the instance
  */
 Select.prototype.from = function(database, table) {
-	Builder.prototype.from.call(this, database, table);
+	this._from.from(database, table);
 	return this;
 };
 
@@ -69,7 +63,7 @@ Select.prototype.and = function(clause) {
 Select.prototype.toString = function() {
 	var to_string = ['SELECT'];
 	to_string.push(this._values.columns());
-	to_string.push(Builder.prototype.toString.call(this, false));
+	to_string.push(this._from.toString(false));
 	to_string.push(this._where.toString() + ';');
 	return to_string.join(' ');
 };
