@@ -24,7 +24,7 @@ function Operator() {
 Operator.prototype.compile = function(column, operator, value) {
 	this._column = column;
 	this._operator = operator;
-	this._value = (typeof value === 'number' || value instanceof UUID) ? this._value = value.toString() : this._value = '\'' + value + '\'';
+	this._value = (typeof value === 'number' || value instanceof UUID) ? value.toString() : '\'' + value + '\'';
 };
 
 /**
