@@ -4,7 +4,6 @@ var reqlib = require('app-root-path').require;
 var assert = require('assert');
 
 var QueryBuilder = reqlib('/builder/querybuilder');
-var UUID = reqlib('/util/uuid');
 
 describe('QueryBuilder', function() {
 	describe('#constructor', function() {
@@ -20,7 +19,7 @@ describe('QueryBuilder', function() {
 				.select()
 				.columns(['col1', 'col2', 'col3'])
 				.from('database', 'table')
-				.where(QueryBuilder.eq('col4', new UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68')))
+				.where(QueryBuilder.eq('col4', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68')))
 				.and(QueryBuilder.gte('col2', 'val2'))
 				.toString(), 'SELECT col1,col2,col3 FROM database.table WHERE col4 = 652f2270-fac4-11e5-bcc3-452e2b89ab68 AND col2 >= \'val2\';'
 			);

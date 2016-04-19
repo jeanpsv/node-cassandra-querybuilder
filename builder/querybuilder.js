@@ -97,5 +97,10 @@ QueryBuilder.gte = function(column, value) {
 };
 
 
+QueryBuilder.Types = {
+	UUID: reqlib('/util/uuid')
+};
+
+
 /*----------  Module exports  ----------*/
 module.exports = QueryBuilder;
