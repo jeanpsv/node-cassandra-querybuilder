@@ -32,8 +32,8 @@ describe('QueryBuilder', function() {
 				.insert()
 				.from('database', 'table')
 				.columns(['col1', 'col2'])
-				.values(['val1', 'val2'])
-				.toString(), 'INSERT INTO database.table (col1,col2) VALUES (val1,val2);'
+				.values(['val1', 5])
+				.toString(), 'INSERT INTO database.table (col1,col2) VALUES (\'val1\',5);'
 			);
 		});
 	});

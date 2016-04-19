@@ -1,3 +1,7 @@
+var reqlib = require('app-root-path').require;
+
+var UUID = reqlib('/util/uuid');
+
 /**
  * Values constructor
  */
@@ -16,7 +20,8 @@ function Values() {
 Values.prototype.set = function(column, value) {
 	if (column && value) {
 		this._columns.push(column);
-		this._values.push(value);
+		var prepared_value = (typeof value === 'number' || value instanceof UUID) ? value.toString() : '\'' + value + '\'';
+		this._values.push(prepared_value);
 	}
 	return this;
 };
@@ -43,8 +48,10 @@ Values.prototype.columns = function(columns) {
  */
 Values.prototype.values = function(values) {
 	if (values) {
+		var value = undefined;
 		for (var i = 0; i < values.length; i++) {
-			this._values.push(values[i]);
+			value = (typeof values[i] === 'number' || values[i] instanceof UUID) ? values[i].toString() : '\'' + values[i] + '\'';
+			this._values.push(value);
 		}
 		return this;
 	}

@@ -37,7 +37,8 @@ describe('Insert', function() {
 			var table = 'table';
 			var f = new FROM();
 			var columns = ['col1', 'col2'];
-			var values = ['?', '?'];
+			var prepared_values = ['\'' + '?' + '\'', 10];
+			var values = ['?', 10];
 			f.from(database, table);
 			var i = new INSERT();
 			var to_string = [];
@@ -45,7 +46,7 @@ describe('Insert', function() {
 			to_string.push(f.toString(false));
 			to_string.push('(' + columns.join() + ')');
 			to_string.push('VALUES');
-			to_string.push('(' + values.join() + ');');
+			to_string.push('(' + prepared_values.join() + ');');
 			assert.equal(i.from(database, table).columns(columns).values(values).toString(), to_string.join(' '));
 		});
 	});
