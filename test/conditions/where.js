@@ -1,9 +1,8 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
-var OPERATOR = reqlib('/operators/operator');
-var WHERE = reqlib('/conditions/where');
+var OPERATOR = require('../../operators/operator');
+var WHERE = require('../../conditions/where');
 
 describe('Where', function() {
 	describe('#constructor', function() {

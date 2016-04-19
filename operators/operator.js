@@ -1,6 +1,4 @@
-var reqlib = require('app-root-path').require;
-
-var UUID = reqlib('/util/uuid');
+var UUID = require('../util/uuid');
 
 /**
  * Operator constructor

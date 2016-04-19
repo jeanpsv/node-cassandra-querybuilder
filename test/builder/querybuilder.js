@@ -1,9 +1,8 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
 
-var QueryBuilder = reqlib('/builder/querybuilder');
+var QueryBuilder = require('../../builder/querybuilder');
 
 describe('QueryBuilder', function() {
 	describe('#constructor', function() {

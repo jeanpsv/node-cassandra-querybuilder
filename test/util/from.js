@@ -1,8 +1,7 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
-var FROM = reqlib('/util/from');
+var FROM = require('../../util/from');
 
 describe('From', function() {
 	describe('#constructor', function() {

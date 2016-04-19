@@ -1,8 +1,6 @@
-var reqlib = require('app-root-path').require;
-
-var From = reqlib('/util/from');
-var Values = reqlib('/util/values');
-var Where = reqlib('/conditions/where');
+var From = require('../util/from');
+var Values = require('../util/values');
+var Where = require('../conditions/where');
 
 
 /**

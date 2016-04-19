@@ -1,9 +1,8 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
-var OPERATOR = reqlib('/operators/operator');
-var UUID = reqlib('/util/uuid');
+var OPERATOR = require('../../operators/operator');
+var UUID = require('../../util/uuid');
 
 describe('Operator', function() {
 	describe('#constructor', function() {

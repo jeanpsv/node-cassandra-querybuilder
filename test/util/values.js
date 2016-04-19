@@ -1,8 +1,7 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
-var VALUES = reqlib('/util/values');
+var VALUES = require('../../util/values');
 
 describe('Values', function() {
 	describe('#constructor', function() {

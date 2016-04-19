@@ -26,8 +26,5 @@
   "homepage": "https://github.com/jeanpsv/node-cassandra-querybuilder#readme",
   "devDependencies": {
     "mocha": "^2.4.5"
-  },
-  "dependencies": {
-    "app-root-path": "^1.0.0"
   }
 }

@@ -1,11 +1,10 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
 
-var DELETE = reqlib('/methods/delete');
-var OPERATOR = reqlib('/operators/operator');
-var FROM = reqlib('/util/from');
+var DELETE = require('../../methods/delete');
+var OPERATOR = require('../../operators/operator');
+var FROM = require('../../util/from');
 
 describe('Delete', function() {
 	describe('#constructor', function() {

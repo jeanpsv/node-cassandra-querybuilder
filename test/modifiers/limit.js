@@ -1,8 +1,7 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
-var LIMIT = reqlib('/modifiers/limit');
+var LIMIT = require('../../modifiers/limit');
 
 describe('Limit', function() {
 	describe('#constructor', function() {

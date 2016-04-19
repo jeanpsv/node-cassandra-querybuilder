@@ -1,11 +1,8 @@
-var reqlib = require('app-root-path').require;
-
-var Select = reqlib('/methods/select');
-var Insert = reqlib('/methods/insert');
-var Update = reqlib('/methods/update');
-var Delete = reqlib('/methods/delete');
-
-var Operator = reqlib('/operators/operator');
+var Select = require('../methods/select');
+var Insert = require('../methods/insert');
+var Update = require('../methods/update');
+var Delete = require('../methods/delete');
+var Operator = require('../operators/operator');
 
 
 /**
@@ -98,7 +95,7 @@ QueryBuilder.gte = function(column, value) {
 
 
 QueryBuilder.Types = {
-	UUID: reqlib('/util/uuid')
+	UUID: require('../util/uuid')
 };
 
 

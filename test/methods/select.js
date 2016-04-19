@@ -1,11 +1,10 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
 
-var SELECT = reqlib('/methods/select');
-var OPERATOR = reqlib('/operators/operator');
-var FROM = reqlib('/util/from');
+var SELECT = require('../../methods/select');
+var OPERATOR = require('../../operators/operator');
+var FROM = require('../../util/from');
 
 describe('Select', function() {
 	describe('#constructor', function() {

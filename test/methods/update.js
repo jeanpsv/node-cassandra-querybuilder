@@ -1,11 +1,10 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
 
-var UPDATE = reqlib('/methods/update');
-var OPERATOR = reqlib('/operators/operator');
-var FROM = reqlib('/util/from');
+var UPDATE = require('../../methods/update');
+var OPERATOR = require('../../operators/operator');
+var FROM = require('../../util/from');
 
 describe('Update', function() {
 	describe('#constructor', function() {

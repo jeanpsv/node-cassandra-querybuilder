@@ -1,10 +1,9 @@
 process.env.NODE_ENV = 'test';
 
-var reqlib = require('app-root-path').require;
 var assert = require('assert');
 
-var INSERT = reqlib('/methods/insert');
-var FROM = reqlib('/util/from');
+var INSERT = require('../../methods/insert');
+var FROM = require('../../util/from');
 
 describe('Insert', function() {
 	describe('#constructor', function() {
