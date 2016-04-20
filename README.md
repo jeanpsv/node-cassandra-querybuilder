@@ -52,7 +52,7 @@ QueryBuilder.eq('id', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2
 * where({operator}) - insert condition
 * and({operator}) - append condition
 ```javascript
-...where(QueryBuilder.eq('foo', 'bar') // WHERE foo = 'bar'
+...where(QueryBuilder.eq('foo', 'bar')) // WHERE foo = 'bar'
 ...where(QueryBuilder.eq('foo', 'bar')).and(QueryBuilder.lte('length', 10)) // WHERE foo = 'bar' AND length <= 10
 ```
 
@@ -93,12 +93,12 @@ QueryBuilder
         .values([new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68'), 'foo', 70])
         .toString();
 
-// UPDATE db.users SET name, age WHERE id = 652f2270-fac4-11e5-bcc3-452e2b89ab68;
+// UPDATE db.users SET name = 'foo bar', age = 71 WHERE id = 652f2270-fac4-11e5-bcc3-452e2b89ab68;
 QueryBuilder
         .update()
         .from('db', 'users')
-        .set('name', 'foo bar')
-        .set('age', 71)
+        .set(QueryBuilder.eq('name', 'foo bar'))
+        .set(QueryBuilder.eq('age', 71))
         .where(QueryBuilder.eq('id', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68')))
         .toString();
 
