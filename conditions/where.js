@@ -37,7 +37,7 @@ Where.prototype.and = function(clause) {
  * @return {string} string that represents the instance
  */
 Where.prototype.toString = function() {
-	return this._clauses.join(' ');
+	return (this._clauses.length == 1) ? '' : this._clauses.join(' ');
 };
 
 /*----------  Module exports  ----------*/
