@@ -19,7 +19,10 @@
     "querybuilder"
   ],
   "author": "Jean Vasconcelos",
-  "license": "MIT",
+  "license": {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/MIT"
+  },
   "bugs": {
     "url": "https://github.com/jeanpsv/node-cassandra-querybuilder/issues"
   },
