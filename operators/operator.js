@@ -1,4 +1,4 @@
-var UUID = require('../util/uuid');
+var UUID = require('../utils/uuid');
 
 /**
  * Operator constructor

@@ -95,7 +95,7 @@ QueryBuilder.gte = function(column, value) {
 
 
 QueryBuilder.Types = {
-	UUID: require('../util/uuid')
+	UUID: require('../utils/uuid')
 };
 
 

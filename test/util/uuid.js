@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 
-var UUID = require('../../util/uuid');
+var UUID = require('../../utils/uuid');
 
 describe('UUID', function() {
 	describe('#constructor', function() {

@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'test';
 var assert = require('assert');
 
 var INSERT = require('../../methods/insert');
-var FROM = require('../../util/from');
+var FROM = require('../../utils/from');
 
 describe('Insert', function() {
 	describe('#constructor', function() {

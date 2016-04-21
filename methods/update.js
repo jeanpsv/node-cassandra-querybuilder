@@ -1,4 +1,4 @@
-var From = require('../util/from');
+var From = require('../utils/from');
 var Operator = require('../operators/operator');
 var Where = require('../conditions/where');
 

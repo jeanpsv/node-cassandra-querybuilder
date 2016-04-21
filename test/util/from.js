@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
-var FROM = require('../../util/from');
+var FROM = require('../../utils/from');
 
 describe('From', function() {
 	describe('#constructor', function() {

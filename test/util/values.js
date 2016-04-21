@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
-var VALUES = require('../../util/values');
+var VALUES = require('../../utils/values');
 
 describe('Values', function() {
 	describe('#constructor', function() {

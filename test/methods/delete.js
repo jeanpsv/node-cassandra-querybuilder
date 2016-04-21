@@ -4,7 +4,7 @@ var assert = require('assert');
 
 var DELETE = require('../../methods/delete');
 var OPERATOR = require('../../operators/operator');
-var FROM = require('../../util/from');
+var FROM = require('../../utils/from');
 
 describe('Delete', function() {
 	describe('#constructor', function() {

@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 var OPERATOR = require('../../operators/operator');
-var UUID = require('../../util/uuid');
+var UUID = require('../../utils/uuid');
 
 describe('Operator', function() {
 	describe('#constructor', function() {

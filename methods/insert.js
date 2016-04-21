@@ -1,5 +1,5 @@
-var From = require('../util/from');
-var Values = require('../util/values');
+var From = require('../utils/from');
+var Values = require('../utils/values');
 
 
 /**

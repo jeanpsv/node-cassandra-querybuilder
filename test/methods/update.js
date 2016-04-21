@@ -4,7 +4,7 @@ var assert = require('assert');
 
 var UPDATE = require('../../methods/update');
 var OPERATOR = require('../../operators/operator');
-var FROM = require('../../util/from');
+var FROM = require('../../utils/from');
 
 describe('Update', function() {
 	describe('#constructor', function() {

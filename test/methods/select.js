@@ -4,7 +4,7 @@ var assert = require('assert');
 
 var SELECT = require('../../methods/select');
 var OPERATOR = require('../../operators/operator');
-var FROM = require('../../util/from');
+var FROM = require('../../utils/from');
 
 describe('Select', function() {
 	describe('#constructor', function() {
