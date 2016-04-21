@@ -2,8 +2,12 @@ var Select = require('../statements/select');
 var Insert = require('../statements/insert');
 var Update = require('../statements/update');
 var Delete = require('../statements/delete');
-var Operator = require('../operators/operator');
 
+var Equal = require('../operators/eq');
+var LessThan = require('../operators/lt');
+var LessThanOrEqual = require('../operators/lte');
+var GreaterThan = require('../operators/gt');
+var GreaterThanOrEqual = require('../operators/gte');
 
 /**
  * QueryBuilder constructor
@@ -50,17 +54,17 @@ QueryBuilder.delete = function() {
  * @return {Operator}      new assignment
  */
 QueryBuilder.eq = function(column, value) {
-	return new Operator().eq(column, value);
+	return new Equal(column, value);
 };
 
 /**
- * Equal operator
+ * Less than operator
  * @param  {string} column column name
  * @param  {string} value  value to set
  * @return {Operator}      new assignment
  */
 QueryBuilder.lt = function(column, value) {
-	return new Operator().lt(column, value);
+	return new LessThan(column, value);
 };
 
 /**
@@ -70,7 +74,7 @@ QueryBuilder.lt = function(column, value) {
  * @return {Operator}      new assignment
  */
 QueryBuilder.lte = function(column, value) {
-	return new Operator().lte(column, value);
+	return new LessThanOrEqual(column, value);
 };
 
 /**
@@ -80,7 +84,7 @@ QueryBuilder.lte = function(column, value) {
  * @return {Operator}      new assignment
  */
 QueryBuilder.gt = function(column, value) {
-	return new Operator().gt(column, value);
+	return new GreaterThan(column, value);
 };
 
 /**
@@ -90,7 +94,7 @@ QueryBuilder.gt = function(column, value) {
  * @return {Operator}      new assignment
  */
 QueryBuilder.gte = function(column, value) {
-	return new Operator().gte(column, value);
+	return new GreaterThanOrEqual(column, value);
 };
 
 

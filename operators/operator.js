@@ -4,81 +4,15 @@ var UUID = require('../utils/uuid');
  * Operator constructor
  * @param {string} column   column name
  * @param {string} operator operator to apply
- * @param {string} value    value to set
+ * @param {[type]} value    value to set
  */
-function Operator() {
-	this._column = undefined;
-	this._operator = undefined;
-	this._value = undefined;
-};
-
-
-/**
- * build operator query
- * @param  {string} column   column name
- * @param  {string} operator operator to apply
- * @param  {string} value    value to set
- */
-Operator.prototype.compile = function(column, operator, value) {
+function Operator(column, operator, value) {
 	this._column = column;
 	this._operator = operator;
-	this._value = (typeof value === 'number' || value instanceof UUID) ? value.toString() : '\'' + value + '\'';
+	this._value = (typeof value === 'string') ? '\'' + value + '\'' : value.toString();
+	// this._value = (typeof value === 'number' || value instanceof UUID) ? value.toString() : '\'' + value + '\'';
 };
 
-/**
- * Equal operator
- * @param  {string} column column name
- * @param  {string} value  value to set
- * @return {Operator}      the instance
- */
-Operator.prototype.eq = function(column, value) {
-	this.compile(column, '=', value);
-	return this;
-};
-
-/**
- * Less than operator
- * @param  {string} column column name
- * @param  {string} value  value to set
- * @return {Operator}      the instance
- */
-Operator.prototype.lt = function(column, value) {
-	this.compile(column, '<', value);
-	return this;
-};
-
-/**
- * Less than or Equal operator
- * @param  {string} column column name
- * @param  {string} value  value to set
- * @return {Operator}      the instance
- */
-Operator.prototype.lte = function(column, value) {
-	this.compile(column, '<=', value);
-	return this;
-};
-
-/**
- * Greater operator
- * @param  {string} column column name
- * @param  {string} value  value to set
- * @return {Operator}      the instance
- */
-Operator.prototype.gt = function(column, value) {
-	this.compile(column, '>', value);
-	return this;
-};
-
-/**
- * Greater than or Equal operator
- * @param  {string} column column name
- * @param  {string} value  value to set
- * @return {Operator}      the instance
- */
-Operator.prototype.gte = function(column, value) {
-	this.compile(column, '>=', value);
-	return this;
-};
 
 /**
  * to string
