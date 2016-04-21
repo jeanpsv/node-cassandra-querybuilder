@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 
-var UPDATE = require('../../methods/update');
+var UPDATE = require('../../statements/update');
 var OPERATOR = require('../../operators/operator');
 var FROM = require('../../utils/from');
 

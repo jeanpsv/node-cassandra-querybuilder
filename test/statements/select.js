@@ -2,36 +2,42 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 
-var DELETE = require('../../methods/delete');
+var SELECT = require('../../statements/select');
 var OPERATOR = require('../../operators/operator');
 var FROM = require('../../utils/from');
 
-describe('Delete', function() {
+describe('Select', function() {
 	describe('#constructor', function() {
-		it('should create an instance of Delete', function() {
-			var d = new DELETE();
-			assert.ok(d);
+		it('should create an instance of Select', function() {
+			var s = new SELECT();
+			assert.ok(s);
+		});
+	});
+	describe('#columns', function() {
+		it('should set columns', function() {
+			var s = new SELECT();
+			assert.ok(s.columns(['col1', 'col2']));
 		});
 	});
 	describe('#from', function() {
 		it('should set database and table', function() {
-			var d = new DELETE();
-			assert.ok(d.from('database', 'table'));
+			var s = new SELECT();
+			assert.ok(s.from('database', 'table'));
 		});
 	});
 	describe('#where', function() {
 		it('should set a condition', function() {
-			var d = new DELETE();
+			var s = new SELECT();
 			var o = new OPERATOR();
 			var column = 'col';
 			var value = 'val';
 			o.eq(column, value);
-			assert.ok(d.where(o));
+			assert.ok(s.where(o));
 		});
 	});
 	describe('#and', function() {
 		it('should append a condition', function() {
-			var d = new DELETE();
+			var s = new SELECT();
 			var o1 = new OPERATOR();
 			var column1 = 'col1';
 			var value1 = 'val1';
@@ -40,16 +46,17 @@ describe('Delete', function() {
 			var column2 = 'col2';
 			var value2 = 'val2';
 			o2.eq(column2, value2);
-			assert.ok(d.where(o1).and(o2));
+			assert.ok(s.where(o1).and(o2));
 		});
 	});
 	describe('#toString', function() {
 		it('should get string representation of the instance', function() {
+			var columns = ['column1', 'column2'];
 			var database = 'database';
 			var table = 'table';
 			var f = new FROM();
 			f.from(database, table);
-			var d = new DELETE();
+			var s = new SELECT();
 			var o1 = new OPERATOR();
 			var column1 = 'col1';
 			var value1 = 'val1';
@@ -59,13 +66,14 @@ describe('Delete', function() {
 			var value2 = 'val2';
 			o2.eq(column2, value2);
 			var to_string = [];
-			to_string.push('DELETE');
+			to_string.push('SELECT');
+			to_string.push(columns.join());
 			to_string.push(f.toString(true));
 			to_string.push('WHERE');
 			to_string.push(o1.toString());
 			to_string.push('AND');
 			to_string.push(o2.toString() + ';');
-			assert.equal(d.from(database, table).where(o1).and(o2).toString(), to_string.join(' '));
+			assert.equal(s.columns(columns).from(database, table).where(o1).and(o2).toString(), to_string.join(' '));
 		});
 	});
 });

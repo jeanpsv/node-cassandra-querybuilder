@@ -1,7 +1,7 @@
-var Select = require('../methods/select');
-var Insert = require('../methods/insert');
-var Update = require('../methods/update');
-var Delete = require('../methods/delete');
+var Select = require('../statements/select');
+var Insert = require('../statements/insert');
+var Update = require('../statements/update');
+var Delete = require('../statements/delete');
 var Operator = require('../operators/operator');
 
 
