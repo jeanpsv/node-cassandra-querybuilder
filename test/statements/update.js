@@ -2,26 +2,26 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 
-var UPDATE = require('../../statements/update');
+var Update = require('../../statements/update');
 var Equal = require('../../operators/eq');
-var FROM = require('../../utils/from');
+var From = require('../../utils/from');
 
 describe('Update', function() {
 	describe('#constructor', function() {
 		it('should create an instance of Update', function() {
-			var u = new UPDATE();
+			var u = new Update();
 			assert.ok(u);
 		});
 	});
 	describe('#from', function() {
 		it('should set database and table', function() {
-			var u = new UPDATE();
+			var u = new Update();
 			assert.ok(u.from('database', 'table'));
 		});
 	});
 	describe('#where', function() {
 		it('should set a condition', function() {
-			var u = new UPDATE();
+			var u = new Update();
 			var column = 'col';
 			var value = 'val';
 			var e = new Equal(column, value);
@@ -30,7 +30,7 @@ describe('Update', function() {
 	});
 	describe('#and', function() {
 		it('should append a condition', function() {
-			var u = new UPDATE();
+			var u = new Update();
 			var column1 = 'col1';
 			var value1 = 'val1';
 			var e1 = new Equal(column1, value1);
@@ -44,9 +44,9 @@ describe('Update', function() {
 		it('should get string representation of the instance', function() {
 			var database = 'database';
 			var table = 'table';
-			var f = new FROM();
+			var f = new From();
 			f.from(database, table);
-			var u = new UPDATE();
+			var u = new Update();
 			var column1 = 'col1';
 			var value1 = 'val1';
 			var e1 = new Equal(column1, value1);

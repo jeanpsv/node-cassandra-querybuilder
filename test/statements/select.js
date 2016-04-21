@@ -2,32 +2,32 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 
-var SELECT = require('../../statements/select');
+var Select = require('../../statements/select');
 var Equal = require('../../operators/eq');
-var FROM = require('../../utils/from');
+var From = require('../../utils/from');
 
 describe('Select', function() {
 	describe('#constructor', function() {
 		it('should create an instance of Select', function() {
-			var s = new SELECT();
+			var s = new Select();
 			assert.ok(s);
 		});
 	});
 	describe('#columns', function() {
 		it('should set columns', function() {
-			var s = new SELECT();
+			var s = new Select();
 			assert.ok(s.columns(['col1', 'col2']));
 		});
 	});
 	describe('#from', function() {
 		it('should set database and table', function() {
-			var s = new SELECT();
+			var s = new Select();
 			assert.ok(s.from('database', 'table'));
 		});
 	});
 	describe('#where', function() {
 		it('should set a condition', function() {
-			var s = new SELECT();
+			var s = new Select();
 			var column = 'col';
 			var value = 'val';
 			var e = new Equal(column, value);
@@ -36,7 +36,7 @@ describe('Select', function() {
 	});
 	describe('#and', function() {
 		it('should append a condition', function() {
-			var s = new SELECT();
+			var s = new Select();
 			var column1 = 'col1';
 			var value1 = 'val1';
 			var e1 = new Equal(column1, value1);
@@ -51,9 +51,9 @@ describe('Select', function() {
 			var columns = ['column1', 'column2'];
 			var database = 'database';
 			var table = 'table';
-			var f = new FROM();
+			var f = new From();
 			f.from(database, table);
-			var s = new SELECT();
+			var s = new Select();
 			var column1 = 'col1';
 			var value1 = 'val1';
 			var e1 = new Equal(column1, value1);

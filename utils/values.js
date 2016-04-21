@@ -1,5 +1,4 @@
-var UUID = require('./uuid');
-
+var Equal = require('../operators/eq');
 /**
  * Values constructor
  */
@@ -18,8 +17,7 @@ function Values() {
 Values.prototype.set = function(column, value) {
 	if (column && value) {
 		this._columns.push(column);
-		var prepared_value = (typeof value === 'number' || value instanceof UUID) ? value.toString() : '\'' + value + '\'';
-		this._values.push(prepared_value);
+		this._values.push(value);
 	}
 	return this;
 };
@@ -46,14 +44,21 @@ Values.prototype.columns = function(columns) {
  */
 Values.prototype.values = function(values) {
 	if (values) {
-		var value = undefined;
 		for (var i = 0; i < values.length; i++) {
-			value = (typeof values[i] === 'number' || values[i] instanceof UUID) ? values[i].toString() : '\'' + values[i] + '\'';
-			this._values.push(value);
+			this._values.push(values[i]);
 		}
 		return this;
+	} else {
+		var prepared_values = [];
+		for (var i = 0; i < this._values.length; i++) {
+			if (typeof this._values[i] === 'string') {
+				prepared_values.push('\'' + this._values[i]+ '\'');
+			} else {
+				prepared_values.push(this._values[i].toString());
+			}
+		}
+		return prepared_values.join();
 	}
-	return this._values.join();
 };
 
 /**
@@ -64,7 +69,7 @@ Values.prototype.toString = function() {
 	var all = [];
 	var length = this._values.length;
 	for (var i = 0; i < length; i++) {
-		all.push(this._columns[i] + ' = ' + this._values[i]);
+		all.push(new Equal(this._columns[i], this._values[i]).toString());
 	}
 	return all.toString();
 };

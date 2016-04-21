@@ -2,26 +2,26 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 
-var DELETE = require('../../statements/delete');
+var Delete = require('../../statements/delete');
 var Equal = require('../../operators/eq');
-var FROM = require('../../utils/from');
+var From = require('../../utils/from');
 
 describe('Delete', function() {
 	describe('#constructor', function() {
 		it('should create an instance of Delete', function() {
-			var d = new DELETE();
+			var d = new Delete();
 			assert.ok(d);
 		});
 	});
 	describe('#from', function() {
 		it('should set database and table', function() {
-			var d = new DELETE();
+			var d = new Delete();
 			assert.ok(d.from('database', 'table'));
 		});
 	});
 	describe('#where', function() {
 		it('should set a condition', function() {
-			var d = new DELETE();
+			var d = new Delete();
 			var column = 'col';
 			var value = 'val';
 			var e = new Equal(column, value);
@@ -30,7 +30,7 @@ describe('Delete', function() {
 	});
 	describe('#and', function() {
 		it('should append a condition', function() {
-			var d = new DELETE();
+			var d = new Delete();
 			var column1 = 'col1';
 			var value1 = 'val1';
 			var e1 = new Equal(column1, value1);
@@ -44,9 +44,9 @@ describe('Delete', function() {
 		it('should get string representation of the instance', function() {
 			var database = 'database';
 			var table = 'table';
-			var f = new FROM();
+			var f = new From();
 			f.from(database, table);
-			var d = new DELETE();
+			var d = new Delete();
 			var column1 = 'col1';
 			var value1 = 'val1';
 			var e1 = new Equal(column1, value1);

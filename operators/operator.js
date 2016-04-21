@@ -10,7 +10,6 @@ function Operator(column, operator, value) {
 	this._column = column;
 	this._operator = operator;
 	this._value = (typeof value === 'string') ? '\'' + value + '\'' : value.toString();
-	// this._value = (typeof value === 'number' || value instanceof UUID) ? value.toString() : '\'' + value + '\'';
 };
 
 

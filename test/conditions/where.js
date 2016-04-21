@@ -2,12 +2,12 @@ process.env.NODE_ENV = 'test';
 
 var assert = require('assert');
 var Equal = require('../../operators/eq');
-var WHERE = require('../../conditions/where');
+var Where = require('../../conditions/where');
 
 describe('Where', function() {
 	describe('#constructor', function() {
 		it('should create an instance of Where', function() {
-			var w = new WHERE();
+			var w = new Where();
 			assert.ok(w);
 		});
 	});
@@ -16,7 +16,7 @@ describe('Where', function() {
 			var column = 'col';
 			var operator = '=';
 			var value = 'val';
-			var w = new WHERE();
+			var w = new Where();
 			var e = new Equal(column, value);
 			w.where(e);
 			var to_string = [];
@@ -33,7 +33,7 @@ describe('Where', function() {
 			var column2 = 'col2';
 			var value2 = 'val2';
 			var e2 = new Equal(column2, value2);
-			var w = new WHERE();
+			var w = new Where();
 			w.where(e1).and(e2);
 			var to_string = [];
 			to_string.push('WHERE');
@@ -51,7 +51,7 @@ describe('Where', function() {
 			var column2 = 'col2';
 			var value2 = 'val2';
 			var e2 = new Equal(column2, value2);
-			var w = new WHERE();
+			var w = new Where();
 			w.where(e1).and(e2);
 			var to_string = [];
 			to_string.push('WHERE');
