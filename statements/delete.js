@@ -49,8 +49,8 @@ Delete.prototype.and = function(clause) {
 Delete.prototype.toString = function() {
 	var to_string = ['DELETE'];
 	to_string.push(this._from.toString(true));
-	to_string.push(this._where.toString() + ';');
-	return to_string.join(' ');
+	to_string.push(this._where.toString());
+	return to_string.join(' ') + ';';
 };
 
 

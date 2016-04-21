@@ -63,8 +63,8 @@ Update.prototype.toString = function() {
 	to_string.push(this._from.toString(false));
 	to_string.push('SET');
 	to_string.push(this._operators.join(', '));
-	to_string.push(this._where.toString() + ';');
-	return to_string.join(' ');
+	to_string.push(this._where.toString());
+	return to_string.join(' ') + ';';
 };
 
 

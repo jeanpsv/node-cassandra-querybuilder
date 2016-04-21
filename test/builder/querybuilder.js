@@ -12,6 +12,15 @@ describe('QueryBuilder', function() {
 		});
 	});
 	describe('#select', function() {
+		it('should create a select statement without where', function() {
+			assert.equal(
+				QueryBuilder
+				.select()
+				.columns(['col1', 'col2', 'col3'])
+				.from('database', 'table')
+				.toString(), 'SELECT col1,col2,col3 FROM database.table;'
+			);
+		});
 		it('should create a select statement', function() {
 			assert.equal(
 				QueryBuilder
