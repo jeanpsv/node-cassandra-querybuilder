@@ -8,7 +8,7 @@ var Where = require('../conditions/where');
  */
 function Update() {
 	this._from = new From();
-	this._operators = [];
+	this._assignments = [];
 	this._where = new Where();
 };
 
@@ -30,7 +30,7 @@ Update.prototype.from = function(database, table) {
  * @return {Update}             the instance
  */
 Update.prototype.set = function(assignment) {
-	this._operators.push(assignment.toString());
+	this._assignments.push(assignment.toString());
 	return this;
 };
 
@@ -62,7 +62,7 @@ Update.prototype.toString = function() {
 	var to_string = ['UPDATE'];
 	to_string.push(this._from.toString(false));
 	to_string.push('SET');
-	to_string.push(this._operators.join(', '));
+	to_string.push(this._assignments.join(', '));
 	to_string.push(this._where.toString());
 	return to_string.join(' ') + ';';
 };

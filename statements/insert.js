@@ -1,5 +1,5 @@
 var From = require('../utils/from');
-var Values = require('../utils/values');
+var Assignments = require('../utils/assignments');
 
 
 /**
@@ -7,7 +7,7 @@ var Values = require('../utils/values');
  */
 function Insert() {
 	this._from = new From();
-	this._values = new Values();
+	this._assignments = new Assignments();
 };
 
 
@@ -28,7 +28,7 @@ Insert.prototype.from = function(database, table) {
  * @return {Insert}        the instance
  */
 Insert.prototype.columns = function(columns) {
-	this._values.columns(columns);
+	this._assignments.columns(columns);
 	return this;
 };
 
@@ -38,7 +38,7 @@ Insert.prototype.columns = function(columns) {
  * @return {Insert}        the instance
  */
 Insert.prototype.values = function(values) {
-	this._values.values(values);
+	this._assignments.values(values);
 	return this;
 };
 
@@ -49,9 +49,9 @@ Insert.prototype.values = function(values) {
 Insert.prototype.toString = function() {
 	var to_string = ['INSERT INTO'];
 	to_string.push(this._from.toString(false));
-	to_string.push('(' + this._values.columns() + ')');
+	to_string.push('(' + this._assignments.columns() + ')');
 	to_string.push('VALUES');
-	to_string.push('(' + this._values.values() + ');');
+	to_string.push('(' + this._assignments.values() + ');');
 	return to_string.join(' ');
 };
 

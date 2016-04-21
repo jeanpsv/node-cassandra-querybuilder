@@ -1,5 +1,5 @@
 var From = require('../utils/from');
-var Values = require('../utils/values');
+var Columns = require('../utils/columns');
 var Where = require('../conditions/where');
 
 
@@ -8,7 +8,7 @@ var Where = require('../conditions/where');
  */
 function Select() {
 	this._from = new From();
-	this._values = new Values();
+	this._columns = new Columns();
 	this._where = new Where();
 };
 
@@ -19,7 +19,7 @@ function Select() {
  * @return {Select}        the instance
  */
 Select.prototype.columns = function(columns) {
-	this._values.columns(columns);
+	this._columns.columns(columns);
 	return this;
 };
 
@@ -60,7 +60,7 @@ Select.prototype.and = function(clause) {
  */
 Select.prototype.toString = function() {
 	var to_string = ['SELECT'];
-	to_string.push(this._values.columns());
+	to_string.push(this._columns.columns());
 	to_string.push(this._from.toString(true));
 	if (this._where.toString()) {
 		to_string.push(this._where.toString());
