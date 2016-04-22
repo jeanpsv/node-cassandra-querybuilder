@@ -1,3 +1,4 @@
+var Values = require('../utils/values');
 var UUID = require('../utils/uuid');
 
 /**
@@ -9,7 +10,7 @@ var UUID = require('../utils/uuid');
 function Operator(column, operator, value) {
 	this._column = column;
 	this._operator = operator;
-	this._value = (typeof value === 'string') ? '\'' + value + '\'' : value.toString();
+	this._value = Values.prepare(value);
 };
 
 

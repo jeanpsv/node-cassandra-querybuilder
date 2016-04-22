@@ -5,6 +5,15 @@ var Values = require('../../utils/values');
 var UUID = require('../../utils/uuid');
 
 describe('Values', function() {
+	describe('#prepare', function() {
+		var string = 'string';
+		var integer = 5;
+		var uuid = new UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68');
+
+		assert.equal(Values.prepare(string), '\'' + string + '\'');
+		assert.equal(Values.prepare(integer), integer);
+		assert.equal(Values.prepare(uuid), uuid);
+	})
 	describe('#constructor', function() {
 		it('should create an instance of Values', function() {
 			var v = new Values();
