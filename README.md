@@ -120,24 +120,24 @@ QueryBuilder
 ```
 
 ### Tips
-you can use statements as an attribute too (is better to make code conditions)
-```javascript
-function(age_value) {
-	var select = QueryBuilder.select();
-	select.columns(['id', 'name', 'age']).from('db', 'users')
-        .where(QueryBuilder.eq('id', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68')))
-
-	if (age_value) {
-		select.and(QueryBuilder.lt('age', 50));
-	}
-
-	return select.toString();
-};
-```
-
 use '*' to select all columns
 ```javascript
 ...columns(['*'])...
+```
+
+you can use statements as an attribute too (it is better to make code conditions)
+```javascript
+function(age_value) {
+        var select = QueryBuilder.select();
+        select.columns(['id', 'name', 'age']).from('db', 'users')
+        .where(QueryBuilder.eq('id', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68')));
+
+        if (age_value) {
+                select.and(QueryBuilder.lt('age', age_value));
+        }
+
+        return select.toString();
+};
 ```
 
 ## Contributors
