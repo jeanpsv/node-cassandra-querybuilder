@@ -16,6 +16,7 @@ var query = QueryBuilder
         .columns(['*']) // select columns to be projected
         .from('db', 'table') // select database and table
         .where(QueryBuilder.eq('foo', 'bar')) // add condition
+        .limit(5) // add limit
         .toString(); // compile and get query
 console.log(query); // SELECT * FROM db.table WHERE foo = 'bar';
 ```
@@ -56,6 +57,13 @@ QueryBuilder.eq('id', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2
 ...where(QueryBuilder.eq('foo', 'bar')).and(QueryBuilder.lte('length', 10)) // WHERE foo = 'bar' AND length <= 10
 ```
 
+### Modifiers
+{limiter} - value to limit
+* limit({limiter}) - add limit
+```javascript
+...where(QueryBuilder.eq('foo', 'bar')).limit(5) // WHERE foo = 'bar' LIMIT 5
+```
+
 ### Utils
 {database} - database name
 {table} - table name
@@ -76,13 +84,14 @@ QueryBuilder.eq('id', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2
 
 ### Examples
 ```javascript
-// SELECT id,name,age FROM db.users WHERE id = 652f2270-fac4-11e5-bcc3-452e2b89ab68 AND age < 50;
+// SELECT id,name,age FROM db.users WHERE id = 652f2270-fac4-11e5-bcc3-452e2b89ab68 AND age < 50 LIMIT 1;
 QueryBuilder
         .select()
         .columns(['id', 'name', 'age'])
         .from('db', 'users')
         .where(QueryBuilder.eq('id', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68')))
         .and(QueryBuilder.lt('age', 50))
+        .limit(1)
         .toString();
 
 // INSERT INTO db.users (id,name,age) VALUES (652f2270-fac4-11e5-bcc3-452e2b89ab68,'foo',70);
@@ -124,6 +133,11 @@ function(age_value) {
 
 	return select.toString();
 };
+```
+
+use '*' to select all columns
+```javascript
+...columns(['*'])...
 ```
 
 ## Contributors
