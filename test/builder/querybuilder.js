@@ -32,6 +32,18 @@ describe('QueryBuilder', function() {
 				.toString(), 'SELECT col1,col2,col3 FROM database.table WHERE col4 = 652f2270-fac4-11e5-bcc3-452e2b89ab68 AND col2 >= \'val2\';'
 			);
 		});
+		it('should create a select statement with limit', function() {
+			assert.equal(
+				QueryBuilder
+				.select()
+				.columns(['col1', 'col2', 'col3'])
+				.from('database', 'table')
+				.where(QueryBuilder.eq('col4', new QueryBuilder.Types.UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68')))
+				.and(QueryBuilder.gte('col2', 'val2'))
+				.limit(10)
+				.toString(), 'SELECT col1,col2,col3 FROM database.table WHERE col4 = 652f2270-fac4-11e5-bcc3-452e2b89ab68 AND col2 >= \'val2\' LIMIT 10;'
+			);
+		});
 	});
 	describe('#insert', function() {
 		it('should create an insert statement', function() {

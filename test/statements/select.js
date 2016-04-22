@@ -46,6 +46,13 @@ describe('Select', function() {
 			assert.ok(s.where(e1).and(e2));
 		});
 	});
+	describe('#limit', function() {
+		it('should add limiter', function() {
+			var s = new Select();
+			var limiter = 5;
+			assert.ok(s.limit(limiter));
+		});
+	});
 	describe('#toString', function() {
 		it('should get string representation of the instance', function() {
 			var columns = ['column1', 'column2'];

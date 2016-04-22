@@ -1,6 +1,7 @@
 var From = require('../utils/from');
 var Columns = require('../utils/columns');
 var Where = require('../conditions/where');
+var Limit = require('../modifiers/limit');
 
 
 /**
@@ -10,6 +11,7 @@ function Select() {
 	this._from = new From();
 	this._columns = new Columns();
 	this._where = new Where();
+	this._limit = new Limit();
 };
 
 
@@ -55,6 +57,16 @@ Select.prototype.and = function(clause) {
 };
 
 /**
+ * limit modifier
+ * @param  {int} limit limiter
+ * @return {Select}       the instance
+ */
+Select.prototype.limit = function(limit) {
+	this._limit.limit(limit);
+	return this;
+};
+
+/**
  * to string
  * @return {string} string that represents the instance
  */
@@ -64,6 +76,9 @@ Select.prototype.toString = function() {
 	to_string.push(this._from.toString(true));
 	if (this._where.toString()) {
 		to_string.push(this._where.toString());
+	}
+	if (this._limit.toString()) {
+		to_string.push(this._limit.toString());
 	}
 	return to_string.join(' ') + ';';
 };

@@ -1,8 +1,7 @@
 /**
  * Limit constructor
- * @param {integer} limit limit to set
  */
-function Limit(limit) {
+function Limit() {
 	this._limit = undefined;
 };
 
@@ -30,7 +29,7 @@ Limit.prototype.toString = function() {
 	var to_string = [];
 	to_string.push('LIMIT');
 	to_string.push(this._limit);
-	return to_string.join(' ');
+	return (this._limit) ? to_string.join(' ') : '';
 };
 
 
