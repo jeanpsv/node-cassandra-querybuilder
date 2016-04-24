@@ -1,6 +1,6 @@
 {
   "name": "node-cassandra-querybuilder",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "this project provides a QueryBuilder for Apache Cassandra to NodeJS",
   "main": "app.js",
   "directories": {
