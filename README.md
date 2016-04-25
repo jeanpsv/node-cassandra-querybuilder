@@ -1,4 +1,4 @@
-# node-cassandra-querybuilder
+# node-cassandra-querybuilder [![Build Status](https://travis-ci.org/jeanpsv/node-cassandra-querybuilder.svg?branch=master)](https://travis-ci.org/jeanpsv/node-cassandra-querybuilder)
 Apache Cassandra QueryBuilder for NodeJS
 
 > this project provides a QueryBuilder for Apache Cassandra to NodeJS
