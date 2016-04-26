@@ -10,7 +10,7 @@ LessThanOrEqual.prototype = Object.create(Operator.prototype);
 /**
  * LessThanOrEqual constructor
  * @param {string} column column name
- * @param {[type]} value  value to set
+ * @param {[type]} value  value to compare
  */
 function LessThanOrEqual(column, value) {
 	Operator.call(this, column, '<=', value);

@@ -10,7 +10,7 @@ Equal.prototype = Object.create(Operator.prototype);
 /**
  * Equal constructor
  * @param {string} column column name
- * @param {[type]} value  value to set
+ * @param {[type]} value  value to compare
  * @param {boolean} force    disable prepare if true
  */
 function Equal(column, value, force) {

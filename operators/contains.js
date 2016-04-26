@@ -4,16 +4,16 @@ var Operator = require('./operator');
 /**
  * Operator inheritance
  */
-GreaterThanOrEqual.prototype = Object.create(Operator.prototype);
+Contains.prototype = Object.create(Operator.prototype);
 
 
 /**
- * GreaterThanOrEqual constructor
+ * Contains constructor
  * @param {string} column column name
  * @param {[type]} value  value to compare
  */
-function GreaterThanOrEqual(column, value) {
-	Operator.call(this, column, '>=', value);
+function Contains(column, value) {
+	Operator.call(this, column, 'CONTAINS', value);
 };
 
 
@@ -21,9 +21,9 @@ function GreaterThanOrEqual(column, value) {
  * to string
  * @return {string} string that represents the instance
  */
-GreaterThanOrEqual.prototype.toString = function() {
+Contains.prototype.toString = function() {
 	return Operator.prototype.toString.call(this);
 };
 
 /*----------  Module exports  ----------*/
-module.exports = GreaterThanOrEqual;
+module.exports = Contains;

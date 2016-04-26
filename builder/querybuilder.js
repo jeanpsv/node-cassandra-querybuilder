@@ -13,6 +13,7 @@ var Add = require('../operators/add');
 var Append = require('../operators/append');
 var Decrement = require('../operators/decrement');
 var Increment = require('../operators/increment');
+var Contains = require('../operators/contains');
 
 /**
  * QueryBuilder constructor
@@ -135,7 +136,6 @@ QueryBuilder.append = function(column, value) {
 /**
  * Decrement operator
  * @param  {string} column column name
- * @param  {string} value  value to decrement
  * @return {Operator}      new decrement operator
  */
 QueryBuilder.decr = function(column) {
@@ -145,11 +145,20 @@ QueryBuilder.decr = function(column) {
 /**
  * Increment operator
  * @param  {string} column column name
- * @param  {string} value  value to increment
  * @return {Operator}      new increment operator
  */
 QueryBuilder.incr = function(column) {
 	return new Append(column);
+};
+
+/**
+ * Contains operator
+ * @param  {string} column column name
+ * @param  {string} value  value to compare
+ * @return {Operator}      new contains operator
+ */
+QueryBuilder.contains = function(column, value) {
+	return new Contains(column, value);
 };
 
 QueryBuilder.Types = {
