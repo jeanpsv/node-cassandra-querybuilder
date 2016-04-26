@@ -14,6 +14,7 @@ var Append = require('../operators/append');
 var Decrement = require('../operators/decrement');
 var Increment = require('../operators/increment');
 var Contains = require('../operators/contains');
+var ContainsKey = require('../operators/containskey');
 
 /**
  * QueryBuilder constructor
@@ -160,6 +161,17 @@ QueryBuilder.incr = function(column) {
 QueryBuilder.contains = function(column, value) {
 	return new Contains(column, value);
 };
+
+/**
+ * ContainsKey operator
+ * @param  {string} column column name
+ * @param  {string} value  value to compare
+ * @return {Operator}      new contains key operator
+ */
+QueryBuilder.containsKey = function(column, value) {
+	return new ContainsKey(column, value);
+};
+
 
 QueryBuilder.Types = {
 	UUID: require('../utils/uuid')
