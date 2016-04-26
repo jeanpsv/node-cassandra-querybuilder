@@ -74,10 +74,10 @@ describe('QueryBuilder', function() {
 			assert.equal(
 				QueryBuilder
 				.delete()
-				.from('engineminer', 'users')
+				.from('database', 'users')
 				.where(QueryBuilder.eq('col1', 'val1'))
 				.and(QueryBuilder.gt('col2', 5))
-				.toString(), 'DELETE FROM engineminer.users WHERE col1 = \'val1\' AND col2 > 5;'
+				.toString(), 'DELETE FROM database.users WHERE col1 = \'val1\' AND col2 > 5;'
 			);
 		});
 	});

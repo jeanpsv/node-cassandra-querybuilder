@@ -11,9 +11,10 @@ GreaterThan.prototype = Object.create(Operator.prototype);
  * GreaterThan constructor
  * @param {string} column column name
  * @param {[type]} value  value to set
+ * @param {boolean} force    disable prepare if true
  */
-function GreaterThan(column, value) {
-	Operator.call(this, column, '>', value);
+function GreaterThan(column, value, force) {
+	Operator.call(this, column, '>', value, force);
 };
 
 

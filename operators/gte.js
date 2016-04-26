@@ -11,9 +11,10 @@ GreaterThanOrEqual.prototype = Object.create(Operator.prototype);
  * GreaterThanOrEqual constructor
  * @param {string} column column name
  * @param {[type]} value  value to set
+ * @param {boolean} force    disable prepare if true
  */
-function GreaterThanOrEqual(column, value) {
-	Operator.call(this, column, '>=', value);
+function GreaterThanOrEqual(column, value, force) {
+	Operator.call(this, column, '>=', value, force);
 };
 
 

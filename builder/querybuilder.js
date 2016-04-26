@@ -8,6 +8,7 @@ var LessThan = require('../operators/lt');
 var LessThanOrEqual = require('../operators/lte');
 var GreaterThan = require('../operators/gt');
 var GreaterThanOrEqual = require('../operators/gte');
+var Remove = require('../operators/remove');
 
 /**
  * QueryBuilder constructor
@@ -95,6 +96,16 @@ QueryBuilder.gt = function(column, value) {
  */
 QueryBuilder.gte = function(column, value) {
 	return new GreaterThanOrEqual(column, value);
+};
+
+/**
+ * Remove operator
+ * @param  {string} column column name
+ * @param  {string} value  value to remove
+ * @return {Operator}      new remove operator
+ */
+QueryBuilder.remove = function(column, value) {
+	return new Remove(column, value);
 };
 
 

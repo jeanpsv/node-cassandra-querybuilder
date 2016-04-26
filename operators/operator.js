@@ -3,14 +3,15 @@ var UUID = require('../utils/uuid');
 
 /**
  * Operator constructor
- * @param {string} column   column name
- * @param {string} operator operator to apply
- * @param {[type]} value    value to set
+ * @param {string}  column   column name
+ * @param {string}  operator operator to apply
+ * @param {[type]}  value    value to set
+ * @param {boolean} force    disable prepare if true
  */
-function Operator(column, operator, value) {
+function Operator(column, operator, value, force) {
 	this._column = column;
 	this._operator = operator;
-	this._value = Values.prepare(value);
+	this._value = (force) ? value : Values.prepare(value);
 };
 
 
