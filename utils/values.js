@@ -13,7 +13,15 @@ function Values() {
  * @return {string}       prepared value
  */
 Values.prepare = function(value) {
-	return (typeof value === 'string') ? '\'' + value + '\'' : value.toString();
+	if (value instanceof Array) {
+		var array_string = [];
+		for (var index in value) {
+			array_string.push(Values.prepare(value[index]));
+		}
+		return array_string;
+	} else {
+		return (typeof value === 'string') ? '\'' + value + '\'' : value.toString();
+	}
 };
 
 /**

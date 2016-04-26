@@ -10,6 +10,7 @@ var GreaterThan = require('../operators/gt');
 var GreaterThanOrEqual = require('../operators/gte');
 var Remove = require('../operators/remove');
 var Add = require('../operators/add');
+var Append = require('../operators/append');
 
 /**
  * QueryBuilder constructor
@@ -52,7 +53,7 @@ QueryBuilder.delete = function() {
 /**
  * Equal operator
  * @param  {string} column column name
- * @param  {string} value  value
+ * @param  {string} value  value to compare
  * @return {Operator}      new assignment
  */
 QueryBuilder.eq = function(column, value) {
@@ -62,7 +63,7 @@ QueryBuilder.eq = function(column, value) {
 /**
  * Less than operator
  * @param  {string} column column name
- * @param  {string} value  value to set
+ * @param  {string} value  value to compare
  * @return {Operator}      new assignment
  */
 QueryBuilder.lt = function(column, value) {
@@ -72,7 +73,7 @@ QueryBuilder.lt = function(column, value) {
 /**
  * Less than or Equal operator
  * @param  {string} column column name
- * @param  {string} value  value to set
+ * @param  {string} value  value to compare
  * @return {Operator}      new assignment
  */
 QueryBuilder.lte = function(column, value) {
@@ -82,7 +83,7 @@ QueryBuilder.lte = function(column, value) {
 /**
  * Greater than operator
  * @param  {string} column column name
- * @param  {string} value  value to set
+ * @param  {string} value  value to compare
  * @return {Operator}      new assignment
  */
 QueryBuilder.gt = function(column, value) {
@@ -92,7 +93,7 @@ QueryBuilder.gt = function(column, value) {
 /**
  * Greater than or Equal operator
  * @param  {string} column column name
- * @param  {string} value  value to set
+ * @param  {string} value  value to compare
  * @return {Operator}      new assignment
  */
 QueryBuilder.gte = function(column, value) {
@@ -117,6 +118,16 @@ QueryBuilder.remove = function(column, value) {
  */
 QueryBuilder.add = function(column, value) {
 	return new Add(column, value);
+};
+
+/**
+ * Append operator
+ * @param  {string} column column name
+ * @param  {string} value  value to append
+ * @return {Operator}      new append operator
+ */
+QueryBuilder.append = function(column, value) {
+	return new Append(column, value);
 };
 
 QueryBuilder.Types = {
