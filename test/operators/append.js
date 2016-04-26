@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'test';
 var assert = require('assert');
 var Append = require('../../operators/append');
 
-describe.only('Append', function() {
+describe('Append', function() {
 	describe('#constructor', function() {
 		it('should compile query', function() {
 			var column = 'col';

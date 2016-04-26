@@ -11,6 +11,7 @@ var GreaterThanOrEqual = require('../operators/gte');
 var Remove = require('../operators/remove');
 var Add = require('../operators/add');
 var Append = require('../operators/append');
+var Decrement = require('../operators/decrement');
 
 /**
  * QueryBuilder constructor
@@ -128,6 +129,16 @@ QueryBuilder.add = function(column, value) {
  */
 QueryBuilder.append = function(column, value) {
 	return new Append(column, value);
+};
+
+/**
+ * Decrement operator
+ * @param  {string} column column name
+ * @param  {string} value  value to append
+ * @return {Operator}      new decrement operator
+ */
+QueryBuilder.decr = function(column) {
+	return new Append(column);
 };
 
 QueryBuilder.Types = {
