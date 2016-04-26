@@ -12,6 +12,7 @@ var Remove = require('../operators/remove');
 var Add = require('../operators/add');
 var Append = require('../operators/append');
 var Decrement = require('../operators/decrement');
+var Increment = require('../operators/increment');
 
 /**
  * QueryBuilder constructor
@@ -134,10 +135,20 @@ QueryBuilder.append = function(column, value) {
 /**
  * Decrement operator
  * @param  {string} column column name
- * @param  {string} value  value to append
+ * @param  {string} value  value to decrement
  * @return {Operator}      new decrement operator
  */
 QueryBuilder.decr = function(column) {
+	return new Append(column);
+};
+
+/**
+ * Increment operator
+ * @param  {string} column column name
+ * @param  {string} value  value to increment
+ * @return {Operator}      new increment operator
+ */
+QueryBuilder.incr = function(column) {
 	return new Append(column);
 };
 
