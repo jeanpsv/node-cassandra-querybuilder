@@ -9,6 +9,7 @@ var LessThanOrEqual = require('../operators/lte');
 var GreaterThan = require('../operators/gt');
 var GreaterThanOrEqual = require('../operators/gte');
 var Remove = require('../operators/remove');
+var Add = require('../operators/add');
 
 /**
  * QueryBuilder constructor
@@ -108,6 +109,15 @@ QueryBuilder.remove = function(column, value) {
 	return new Remove(column, value);
 };
 
+/**
+ * Add operator
+ * @param  {string} column column name
+ * @param  {string} value  value to add
+ * @return {Operator}      new add operator
+ */
+QueryBuilder.add = function(column, value) {
+	return new Add(column, value);
+};
 
 QueryBuilder.Types = {
 	UUID: require('../utils/uuid')
