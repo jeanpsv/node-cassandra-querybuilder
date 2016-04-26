@@ -18,7 +18,7 @@ Values.prepare = function(value) {
 		for (var index in value) {
 			array_string.push(Values.prepare(value[index]));
 		}
-		return array_string;
+		return '[' + array_string + ']';
 	} else {
 		return (typeof value === 'string') ? '\'' + value + '\'' : value.toString();
 	}

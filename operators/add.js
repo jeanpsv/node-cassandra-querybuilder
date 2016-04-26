@@ -11,7 +11,7 @@ Add.prototype = Object.create(Operator.prototype);
 /**
  * Add constructor
  * @param {string} column columns
- * @param {[type]} value  value to set
+ * @param {number} value  value to set
  */
 function Add(column, value) {
 	Operator.call(this, new Equal(column, column, true).toString(), '+', value);

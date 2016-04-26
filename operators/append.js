@@ -11,9 +11,12 @@ Append.prototype = Object.create(Operator.prototype);
 /**
  * Append constructor
  * @param {string} column columns
- * @param {[type]} value  value to set
+ * @param {array} value  value to set
  */
 function Append(column, value) {
+	if (!(value instanceof Array)) {
+		value = [value];
+	}
 	Operator.call(this, new Equal(column, column, true).toString(), '+', value);
 };
 

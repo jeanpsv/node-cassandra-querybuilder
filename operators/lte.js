@@ -11,10 +11,9 @@ LessThanOrEqual.prototype = Object.create(Operator.prototype);
  * LessThanOrEqual constructor
  * @param {string} column column name
  * @param {[type]} value  value to set
- * @param {boolean} force    disable prepare if true
  */
-function LessThanOrEqual(column, value, force) {
-	Operator.call(this, column, '<=', value, force);
+function LessThanOrEqual(column, value) {
+	Operator.call(this, column, '<=', value);
 };
 
 

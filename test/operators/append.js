@@ -17,12 +17,12 @@ describe('Append', function() {
 		it('should get string representation of the instance', function() {
 			var column = 'col';
 			var operator = '+';
-			var value = ['val1', 'val2', 5];
+			var value = ['val1', 5];
 			var append = new Append(column, value);
 			var to_string = [];
 			to_string.push(column + ' = ' + column);
 			to_string.push(operator);
-			to_string.push('\'' + value[0] + '\'' + ',' + '\'' + value[1] + '\'' + ',' + value[2]);
+			to_string.push('[' + '\'' + value[0] + '\'' + ',' + value[1] + ']');
 			assert.equal(append.toString(), to_string.join(' '));
 		});
 	});

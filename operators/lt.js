@@ -11,10 +11,9 @@ LessThan.prototype = Object.create(Operator.prototype);
  * LessThan constructor
  * @param {string} column column name
  * @param {[type]} value  value to set
- * @param {boolean} force    disable prepare if true
  */
-function LessThan(column, value, force) {
-	Operator.call(this, column, '<', value, force);
+function LessThan(column, value) {
+	Operator.call(this, column, '<', value);
 };
 
 
