@@ -1,4 +1,6 @@
 var Equal = require('../operators/eq');
+var stringifyObject = require('stringify-object');
+var UUID = require('./uuid')
 /**
  * Values constructor
  */
@@ -13,6 +15,34 @@ function Values() {
  * @return {string}       prepared value
  */
 Values.prepare = function(value) {
+	switch(typeof value) {
+		case 'string':
+			if (value === '?') {
+				return value;
+			}
+
+			var regExp = new RegExp(/\\n/, 'g');
+
+			if (regExp.test(value)) {
+				return '\"' + value + '\"';
+			}
+
+			return '\'' + value + '\'';
+
+		case 'object':
+			if (value instanceof UUID) {
+				return value.toString()
+			}
+
+			return stringifyObject(value, {
+				indent: '',
+				singleQuotes: true
+			});
+
+		default:
+			return value.toString();
+	}
+
 	return (typeof value === 'string') ? '\'' + value + '\'' : value.toString();
 };
 

@@ -36,17 +36,11 @@ describe('Insert', function() {
 			var table = 'table';
 			var f = new From();
 			var columns = ['col1', 'col2'];
-			var prepared_values = ['\'' + '?' + '\'', 10];
 			var values = ['?', 10];
 			f.from(database, table);
 			var i = new Insert();
-			var to_string = [];
-			to_string.push('INSERT INTO');
-			to_string.push(f.toString(false));
-			to_string.push('(' + columns.join() + ')');
-			to_string.push('VALUES');
-			to_string.push('(' + prepared_values.join() + ');');
-			assert.equal(i.from(database, table).columns(columns).values(values).toString(), to_string.join(' '));
+			var query = 'INSERT INTO database.table (col1,col2) VALUES (?,10);'
+			assert.equal(i.from(database, table).columns(columns).values(values).toString(), query);
 		});
 	});
 });
