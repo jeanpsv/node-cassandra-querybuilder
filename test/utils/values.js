@@ -9,10 +9,17 @@ describe('Values', function() {
 		var string = 'string';
 		var integer = 5;
 		var uuid = new UUID('652f2270-fac4-11e5-bcc3-452e2b89ab68');
+		var obj = {
+			key: 'value',
+			subObject: {
+				subKey: 'subValue'
+			}
+		};
 
 		assert.equal(Values.prepare(string), '\'' + string + '\'');
 		assert.equal(Values.prepare(integer), integer);
 		assert.equal(Values.prepare(uuid), uuid);
+		assert.equal(Values.prepare(obj), '{\n\tkey: \'value\',\n\tsubObject: {\n\t\tsubKey: \'subValue\'\n\t}\n}')
 	})
 	describe('#constructor', function() {
 		it('should create an instance of Values', function() {
